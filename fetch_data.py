@@ -1,9 +1,10 @@
 import duckdb
 import pandas as pd
 import requests
+import os
 
 url = "https://data.cityofnewyork.us/resource/jz4z-kudi.json"
-params = {"$limit": 3, "$$app_token": "Inxt007JrEdJQwKaX5XcYkfFC"}
+params = {"$limit": 3, "$$app_token": os.environ["NYC_APP_TOKEN"]}
 
 data = requests.get(url, params=params).json()
 df = pd.DataFrame(data)
